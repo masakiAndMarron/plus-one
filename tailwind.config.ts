@@ -11,6 +11,8 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        "hamburger-bg": "rgba(40, 40, 60, 0.9)",
+        "site-main-color": "#FFFFFF",
       },
     },
   },
