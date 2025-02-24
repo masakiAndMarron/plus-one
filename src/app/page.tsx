@@ -13,8 +13,6 @@ import works3 from "../../public/img/works3.jpg";
 import works4 from "../../public/img/works4.jpg";
 import works5 from "../../public/img/works5.jpg";
 import works6 from "../../public/img/works6.jpg";
-import works7 from "../../public/img/works7.jpg";
-import works8 from "../../public/img/works8.jpg";
 
 import Image from "next/image";
 import { Tangerine, Frank_Ruhl_Libre } from "next/font/google";

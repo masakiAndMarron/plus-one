@@ -15,7 +15,7 @@ export const horizontalLoop = (
 ) => {
   items = Array.from(items);
 
-  let tl = gsap.timeline({
+  const tl = gsap.timeline({
       repeat: config.repeat,
       paused: config.paused,
       defaults: { ease: "none" },
@@ -26,11 +26,11 @@ export const horizontalLoop = (
     times: number[] = [],
     widths: number[] = [],
     xPercents: number[] = [],
-    curIndex = 0,
     pixelsPerSecond: number = (config.speed || 1) * 100,
     snap: (value: number) => number =
-      config.snap === false ? (v: number) => v : gsap.utils.snap(1),
-    totalWidth: number,
+      config.snap === false ? (v: number) => v : gsap.utils.snap(1);
+  let curIndex = 0,
+    totalWidth: number = 0,
     curX: number,
     distanceToStart: number,
     distanceToLoop: number,
@@ -40,7 +40,7 @@ export const horizontalLoop = (
   // 初期化処理 transform:translateX(0)を各要素に設定
   gsap.set(items, {
     xPercent: (i: number, el: HTMLElement) => {
-      let w = (widths[i] = parseFloat(
+      const w = (widths[i] = parseFloat(
         gsap.getProperty(el, "width", "px") as string
       ));
       console.log("w:" + w);
@@ -54,8 +54,6 @@ export const horizontalLoop = (
   });
   gsap.set(items, { x: 0 });
 
-  console.log("xPercents:" + xPercents);
-
   totalWidth =
     items[length - 1].offsetLeft +
     (xPercents[length - 1] / 100) * widths[length - 1] -
@@ -64,24 +62,13 @@ export const horizontalLoop = (
       (gsap.getProperty(items[length - 1], "scaleX") as number) +
     (config.paddingRight || 0);
 
-  console.log("totalwidth:" + totalWidth);
-
   for (i = 0; i < length; i++) {
     item = items[i];
     curX = (xPercents[i] / 100) * widths[i];
-    console.log("curX:" + curX);
     distanceToStart = item.offsetLeft + curX - startX;
-    console.log("item.offsetLeft:" + item.offsetLeft);
-    console.log("startX:" + startX);
-    console.log("distanceToStart:" + distanceToStart);
     distanceToLoop =
       distanceToStart +
       widths[i] * (gsap.getProperty(item, "scaleX") as number);
-    console.log("distanceToLoop:" + distanceToLoop);
-
-    console.log(
-      "xPercent:" + snap(((curX - distanceToLoop) / widths[i]) * 100)
-    );
 
     tl.to(
       item,
@@ -112,8 +99,8 @@ export const horizontalLoop = (
     if (Math.abs(index - curIndex) > length / 2) {
       index += index > curIndex ? -length : length;
     }
-    let newIndex = gsap.utils.wrap(0, length, index) as number,
-      time = times[newIndex];
+    const newIndex = gsap.utils.wrap(0, length, index) as number;
+    let time = times[newIndex];
     if (time > tl.time() !== index > curIndex) {
       vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
       time += tl.duration() * (index > curIndex ? 1 : -1);
