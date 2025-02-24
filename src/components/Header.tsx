@@ -19,7 +19,7 @@ const Header = (props: HeaderProps) => {
   };
 
   return (
-    <header className="p-2 hidden">
+    <header className="p-2 hidden fixed top-0 left-0 z-20 w-full bg-white">
       <nav className="flex">
         <div className="flex-none md:mt-7 sm:flex-1 md:flex-1 lg:flex-1 xl:flex-1">
           <Link href="/">
@@ -27,14 +27,14 @@ const Header = (props: HeaderProps) => {
           </Link>
         </div>
         {openMenu ? (
-          <div className="flex flex-row z-10 top-0 right-0 fixed h-full w-full">
+          <div className="flex flex-row z-10 top-0 right-0 fixed h-[100vh] w-full">
             <div className="basis-full bg-hamburger-bg text-[wheat]">
               <ul className="text-center h-[40%] flex flex-col gap-5">
                 <li className="text-right">
                   <FontAwesomeIcon
                     width={40}
                     height={60}
-                    className="transform scale-150 mt-3 mr-2"
+                    className="transform scale-150 mt-5"
                     icon={faXmark}
                     onClick={menuFunction}
                   />

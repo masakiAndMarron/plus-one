@@ -4,13 +4,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
   async redirects() {
-    return [
-      {
-        source: "/((?!maintenance.html$).*$)",
-        destination: "/maintenance.html",
-        permanent: false,
-      },
-    ];
+    return process.env.MAINTENANCE_MODE === "true"
+      ? [
+          {
+            source: "/((?!maintenance.html$).*$)",
+            destination: "/maintenance.html",
+            permanent: false,
+          },
+        ]
+      : [];
   },
 };
 

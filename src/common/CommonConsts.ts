@@ -19,3 +19,6 @@ export const MENU_LIST = [
     link: "#future",
   },
 ];
+
+export const WORKS_IMG_HEIGHT = 400;
+export const WORKS_IMG_WIDTH = 400;

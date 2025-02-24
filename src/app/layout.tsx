@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { MENU_LIST } from "@/common/CommonConsts";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import Footer from "@/components/Footer";
 config.autoAddCss = false;
 
 const geistSans = Geist({
@@ -28,12 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className="h-full" lang="en">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased sm:hidden`}
       >
         <Header list={MENU_LIST}></Header>
-        <main className="h-full">{children && children}</main>
+        <main>{children && children}</main>
+        <Footer list={MENU_LIST}></Footer>
       </body>
     </html>
   );
