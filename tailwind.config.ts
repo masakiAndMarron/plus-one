@@ -42,13 +42,4 @@ export default {
       },
     },
   },
-  plugins: [
-    function ({ addUtilities }) {
-      addUtilities({
-        ".clip-triangle": {
-          "clip-path": "polygon(50% 0%, 280% 100%, 0% 100%, 0% 20%)",
-        },
-      });
-    },
-  ],
 } satisfies Config;
