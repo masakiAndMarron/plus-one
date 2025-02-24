@@ -247,7 +247,7 @@ export default function Home() {
           </div>
         </section>
         {/* Service */}
-        <section className="bg-site-sub-color h-[167.73vw] font-japanese-basic pl-5 pr-5">
+        <section className="bg-site-sub-color font-japanese-basic pl-5 pr-5 pb-12">
           <header className="pt-16">
             <span className="text-xs">-私たちのサービス</span>
             <h2
@@ -256,6 +256,65 @@ export default function Home() {
               Service
             </h2>
           </header>
+          <div className="mt-4">
+            <div className="flex justify-center items-center">
+              <div className="flex-1 mr-4">
+                <Image src={works1} alt=""></Image>
+              </div>
+              <div className="flex-1">
+                <h3 className="mb-4 text-sm phrase-emphasis">
+                  お客様の想いをカタチにするご提案
+                </h3>
+                <p className="text-[0.5rem]">
+                  住まいに関するお悩みやご要望をじっくりとお伺いし、
+                  お客様に最適なリフォームプランをご提案します。
+                  デザイン性・機能性・コストバランスを考え抜いたご提案で、理想の暮らしを実現します。
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-center items-center mt-12">
+              <div className="flex-1 mr-4">
+                <h3 className="mb-4 text-sm phrase-emphasis">
+                  確かな技術と豊富な実績
+                </h3>
+                <p className="text-[0.5rem]">
+                  私たちは経験豊富な職人と専門スタッフが一丸となり、高品質な施工をお約束します。
+                  長年培ってきた技術と最新の施工方法を活かし、安全で耐久性の高いリフォームを行います。
+                </p>
+              </div>
+              <div className="flex-1">
+                <Image src={works2} alt=""></Image>
+              </div>
+            </div>
+            <div className="flex justify-center items-center mt-12">
+              <div className="flex-1 mr-4">
+                <Image src={works3} alt=""></Image>
+              </div>
+              <div className="flex-1">
+                <h3 className="mb-4 text-sm phrase-emphasis">
+                  素材・デザインにこだわったご提案
+                </h3>
+                <p className="text-[0.5rem]">
+                  お住まいの雰囲気やライフスタイルに合わせた最適な素材・デザインをご提案。
+                  流行を取り入れつつも、長く愛される住まいづくりを目指します。
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-center items-center mt-12">
+              <div className="flex-1  mr-4">
+                <h3 className="mb-4 text-sm phrase-emphasis">
+                  予算に合わせた柔軟なプランニング
+                </h3>
+                <p className="text-[0.5rem]">
+                  リフォームは大きな投資。だからこそ、お客様のご予算に合わせた最適なプランをご提案します。
+                  コストを抑えながらも、品質を損なわない工夫を取り入れます。
+                </p>
+              </div>
+              <div className="flex-1">
+                <Image src={works4} alt=""></Image>
+              </div>
+            </div>
+          </div>
         </section>
         {/* Works */}
         <section className="h-[167.73vw] font-japanese-basic pl-5 pr-5">

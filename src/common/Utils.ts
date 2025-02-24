@@ -43,8 +43,6 @@ export const horizontalLoop = (
       const w = (widths[i] = parseFloat(
         gsap.getProperty(el, "width", "px") as string
       ));
-      console.log("w:" + w);
-      console.log(parseFloat(gsap.getProperty(el, "x", "px") as string) / w);
       xPercents[i] = snap(
         (parseFloat(gsap.getProperty(el, "x", "px") as string) / w) * 100 +
           (gsap.getProperty(el, "xPercent") as number)
