@@ -18,6 +18,7 @@ import Image from "next/image";
 import { Tangerine, Frank_Ruhl_Libre } from "next/font/google";
 import Link from "next/link";
 import { WORKS_IMG_HEIGHT, WORKS_IMG_WIDTH } from "@/common/CommonConsts";
+import { useSearchParams } from "next/navigation";
 
 const ACCENT_ENGLISH = Tangerine({
   weight: "400",
@@ -29,10 +30,12 @@ const SECTION_TITLE = Frank_Ruhl_Libre({
   subsets: ["latin"],
 });
 
-export default function Home() {
+const Home = () => {
   const companyTtlRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
+    console.log(searchParams.get("srcDiv"));
     /***************************************
      * openingアニメーション
      ***************************************/
@@ -47,9 +50,6 @@ export default function Home() {
       stagger: 0.2,
     });
 
-    gsap.set("#content-wrapper", {
-      display: "none",
-    });
     gsap.set(companyTtlRef.current, {
       opacity: 1,
     });
@@ -63,6 +63,9 @@ export default function Home() {
     gsap.set("#content-wrapper", {
       y: "20px",
       opacity: 0,
+    });
+    gsap.set("footer", {
+      display: "none",
     });
 
     const openTl = gsap.timeline();
@@ -257,7 +260,7 @@ export default function Home() {
             </h2>
           </header>
           <div className="mt-4">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center mt-6">
               <div className="flex-1 mr-4">
                 <Image src={works1} alt=""></Image>
               </div>
@@ -437,4 +440,5 @@ export default function Home() {
       </div>
     </>
   );
-}
+};
+export default Home;
