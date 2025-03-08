@@ -22,6 +22,7 @@ import Image from "next/image";
 import { Tangerine, Frank_Ruhl_Libre } from "next/font/google";
 import Link from "next/link";
 import { WORKS_IMG_HEIGHT, WORKS_IMG_WIDTH } from "@/common/CommonConsts";
+import { useSearchParams } from "next/navigation";
 
 const ACCENT_ENGLISH = Tangerine({
   weight: "400",
@@ -35,8 +36,10 @@ const SECTION_TITLE = Frank_Ruhl_Libre({
 
 const Home = () => {
   const companyTtlRef = useRef<HTMLDivElement>(null);
+  const searchParams = useSearchParams();
 
   useEffect(() => {
+    console.log(searchParams.get("srcDiv"));
     /***************************************
      * openingアニメーション
      ***************************************/
@@ -66,6 +69,9 @@ const Home = () => {
     gsap.set("#content-wrapper", {
       y: "20px",
       opacity: 0,
+    });
+    gsap.set("footer", {
+      display: "none",
     });
     gsap.set("footer", {
       display: "none",

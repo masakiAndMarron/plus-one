@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import serviceTop from "../../../public/img/service.jpg";
 import consultationSvg from "../../../public/img/consultation.svg";
 import magnifyingGlassSvg from "../../../public/img/magnifyingGlass.svg";
 import rdesignSvg from "../../../public/img/rdesign.svg";
