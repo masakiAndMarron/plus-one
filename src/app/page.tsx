@@ -39,7 +39,6 @@ const Home = () => {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    console.log(searchParams.get("srcDiv"));
     /***************************************
      * openingアニメーション
      ***************************************/

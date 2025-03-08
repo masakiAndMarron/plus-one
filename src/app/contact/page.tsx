@@ -1,6 +1,3 @@
-import Image from "next/image";
-import contactTopImg from "../../../public/img/contact.jpg";
-
 const Contact = () => {
   return (
     <div className="pt-16 font-japanese-basic">

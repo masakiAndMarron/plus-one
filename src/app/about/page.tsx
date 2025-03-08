@@ -1,5 +1,4 @@
 import Image from "next/image";
-import aboutTop from "../../../public/img/about-top.jpg";
 import { Klee_One } from "next/font/google";
 import philosophyImg from "../../../public/img/managementPhilosophy.jpg";
 import silhouetteImg from "../../../public/img/silhouette.png";
