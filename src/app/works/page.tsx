@@ -1,5 +1,3 @@
-import Image from "next/image";
-import worksTopImg from "../../../public/img/works-top.jpg";
 import WorkCard from "@/components/WorkCard";
 import { WORKS_LIST } from "@/common/CommonConsts";
 
