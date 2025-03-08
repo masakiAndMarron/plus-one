@@ -2,17 +2,18 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import CompanyLogo from "../../public/img/com-name-dec.png";
+import CompanyLogo from "../../public/img/plusOneName.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 
 type HeaderProps = {
-  list: { name: string; link: string }[];
+  list: { name: string; link: string; query: { srcDiv: string } }[];
 };
 
 const Header = (props: HeaderProps) => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
-  const data: { name: string; link: string }[] = props.list;
+  const data: { name: string; link: string; query: { srcDiv: string } }[] =
+    props.list;
 
   const menuFunction = () => {
     setOpenMenu(!openMenu);
@@ -34,17 +35,32 @@ const Header = (props: HeaderProps) => {
                   <FontAwesomeIcon
                     width={40}
                     height={60}
-                    className="transform scale-150 mt-5"
+                    className="transform scale-150 mt-5 mr-1"
                     icon={faXmark}
                     onClick={menuFunction}
                   />
                 </li>
                 {data.map(
-                  (value: { name: string; link: string }, index: number) => (
+                  (
+                    value: {
+                      name: string;
+                      link: string;
+                      // query: { srcDiv: string };
+                    },
+                    index: number
+                  ) => (
                     <li key={index} className="font-">
-                      <a href={value.link} onClick={() => menuFunction()}>
+                      <Link
+                        href={{
+                          pathname: value.link,
+                          // query: {
+                          //   srcDiv: value.query.srcDiv,
+                          // },
+                        }}
+                        onClick={() => menuFunction()}
+                      >
                         {value.name}
-                      </a>
+                      </Link>
                     </li>
                   )
                 )}
@@ -55,9 +71,25 @@ const Header = (props: HeaderProps) => {
         <div className="flex-initial text-[#abc5c5] font-bold m-5 ">
           <ul className="md:flex  hidden flex-initial text-left">
             {data.map(
-              (value: { name: string; link: string }, index: number) => (
+              (
+                value: {
+                  name: string;
+                  link: string;
+                  query: { srcDiv: string };
+                },
+                index: number
+              ) => (
                 <li key={index} className="p-4">
-                  <a href={value.link}>{value.name} </a>
+                  <Link
+                    href={{
+                      pathname: value.link,
+                      query: {
+                        srcDiv: value.query.srcDiv,
+                      },
+                    }}
+                  >
+                    {value.name}
+                  </Link>
                 </li>
               )
             )}

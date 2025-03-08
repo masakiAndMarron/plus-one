@@ -13,6 +13,10 @@ import works3 from "../../public/img/works3.jpg";
 import works4 from "../../public/img/works4.jpg";
 import works5 from "../../public/img/works5.jpg";
 import works6 from "../../public/img/works6.jpg";
+import beforePaint from "../../public/img/beforePaint.jpg";
+import afterPaint from "../../public/img/afterPaint.jpg";
+import beforeRoom from "../../public/img/beforeRoom.jpg";
+import afterRoom from "../../public/img/afterRoom.jpg";
 
 import Image from "next/image";
 import { Tangerine, Frank_Ruhl_Libre } from "next/font/google";
@@ -29,7 +33,7 @@ const SECTION_TITLE = Frank_Ruhl_Libre({
   subsets: ["latin"],
 });
 
-export default function Home() {
+const Home = () => {
   const companyTtlRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,6 +43,7 @@ export default function Home() {
     const TARGET_ELM: TargetElement =
       companyTtlRef.current != null ? companyTtlRef.current : "";
 
+    // 住まいの総合リフォームアニメーション
     const SPLIT = new SplitType(TARGET_ELM, { types: "chars" });
     gsap.from(SPLIT.chars, {
       opacity: 0,
@@ -47,9 +52,7 @@ export default function Home() {
       stagger: 0.2,
     });
 
-    gsap.set("#content-wrapper", {
-      display: "none",
-    });
+    // 初期設定
     gsap.set(companyTtlRef.current, {
       opacity: 1,
     });
@@ -63,6 +66,9 @@ export default function Home() {
     gsap.set("#content-wrapper", {
       y: "20px",
       opacity: 0,
+    });
+    gsap.set("footer", {
+      display: "none",
     });
 
     const openTl = gsap.timeline();
@@ -90,7 +96,6 @@ export default function Home() {
       })
       .to("#content-wrapper", {
         display: "block",
-        height: "100%!important",
         y: 0,
         opacity: 1,
         duration: 0.5,
@@ -153,7 +158,10 @@ export default function Home() {
 
   return (
     <>
-      <div className="h-[100vh] bg-[#00bfff] opening-animation">
+      <div
+        suppressHydrationWarning={true}
+        className="h-[100vh] bg-[#00bfff] opening-animation"
+      >
         <div
           ref={companyTtlRef}
           className="opacity-0 company-title text-[22px] absolute top-[20%] left-1/2 
@@ -189,7 +197,7 @@ export default function Home() {
       </div>
       <div id="content-wrapper" className="hidden">
         <div className="bg-site-sub-color h-[167.73vw] pt-40 relative">
-          <h4 className="absolute top-[75px] text-base font-japanese-basic z-10 ml-5 text-site-accent-color tracking-wider leading-8">
+          <h4 className="absolute top-[75px] text-base font-japanese-basic z-10 ml-5 text-site-accent-color leading-8">
             今よりもっと快適な暮らしを<br></br>一緒に考えませんか？
           </h4>
           <div className="h-[70%] w-[90%] m-auto bg-site-sub-color clip-triangle relative">
@@ -225,216 +233,258 @@ export default function Home() {
         <section className="font-japanese-basic pl-5 pr-5 pb-12">
           <header className="pt-16">
             <span className="text-xs">-私たちについて</span>
-            <h2
-              className={`text-2xl ${SECTION_TITLE.className} tracking-[4px]`}
-            >
-              About
-            </h2>
+            <div>
+              <h2
+                className={`title-br-util text-2xl ${SECTION_TITLE.className} tracking-[4px]`}
+              >
+                About
+              </h2>
+            </div>
           </header>
-          <div className="text-sm leading-10 mt-6">
-            私たちは、お客様の理想の住まいをカタチにする
-            <br></br>
-            リフォーム会社です。
-            <br></br>
-            長年の経験と確かな技術で、暮らしをより快適に、より美しくするお手伝いをしています。
-            <br></br>
-            住まいのお悩みやご希望に寄り添い、一人ひとりに最適なリフォームプランをご提案。
-            <br></br>
-            安心してお任せいただけるサービスを提供します。
-          </div>
-          <div className="mt-12">
-            <Image width={400} height={400} src={aboutPic} alt=""></Image>
+          <div>
+            <h3 className="text-text-main-color font-bold text-xl mt-6">
+              理想の住まいをカタチに
+            </h3>
+            <div className=" text-sm leading-7 mt-6 tracking-tighter">
+              私たちは、お客様の理想の住まいをカタチにする
+              <br></br>
+              リフォーム会社です。
+              <br></br>
+              長年の経験と確かな技術で、暮らしをより快適に、より美しくするお手伝いをしています。
+              <br></br>
+              住まいのお悩みやご希望に寄り添い、一人ひとりに最適なリフォームプランをご提案。
+              <br></br>
+              安心してお任せいただけるサービスを提供します。
+            </div>
+            <div className="mt-12">
+              <Image width={400} height={400} src={aboutPic} alt=""></Image>
+            </div>
           </div>
         </section>
         {/* Service */}
         <section className="bg-site-sub-color font-japanese-basic pl-5 pr-5 pb-12">
           <header className="pt-16">
             <span className="text-xs">-私たちのサービス</span>
-            <h2
-              className={`text-2xl ${SECTION_TITLE.className} tracking-[4px]`}
-            >
-              Service
-            </h2>
+            <div>
+              <h2
+                className={`title-br-util text-2xl ${SECTION_TITLE.className} tracking-[4px]`}
+              >
+                Service
+              </h2>
+            </div>
           </header>
-          <div className="mt-4">
-            <div className="flex justify-center items-center">
-              <div className="flex-1 mr-4">
-                <Image src={works1} alt=""></Image>
+          <div className="mt-6">
+            <h3 className="text-site-accent-color font-bold">外装</h3>
+            <div className="mt-8 bg-white rounded relative pt-3">
+              <label className="absolute -top-2 left-4 text-sm tracking-widest pl-2 pr-2 rounded-3xl bg-slate-300 opacity-80">
+                #塗装
+              </label>
+              <div className="m-auto p-5 flex">
+                <div className="w-[50%] text-center">
+                  <span className="text-blue-600">before</span>
+                  <Image
+                    className="h-full w-full p-1"
+                    src={beforePaint}
+                    alt=""
+                  ></Image>
+                </div>
+                <div className="w-[50%] text-center">
+                  <span className="text-red-600">after</span>
+                  <Image
+                    className="h-full w-full p-1"
+                    src={afterPaint}
+                    alt=""
+                  ></Image>
+                </div>
               </div>
-              <div className="flex-1">
-                <h3 className="mb-4 text-sm phrase-emphasis">
-                  お客様の想いをカタチにするご提案
+              <div className="p-8">
+                <h3 className="mb-8 text-sm phrase-emphasis flex flex-col pl-5 gap-4 ">
+                  <span className="ml-8">住まいの外観</span>
+                  <span className="ml-16">もっと美しく</span>
+                  <span className="ml-24">もっと長持ち。</span>
                 </h3>
-                <p className="text-[0.5rem]">
-                  住まいに関するお悩みやご要望をじっくりとお伺いし、
-                  お客様に最適なリフォームプランをご提案します。
-                  デザイン性・機能性・コストバランスを考え抜いたご提案で、理想の暮らしを実現します。
+                <p className="text-[0.82rem] leading-7">
+                  お住まいの外装は、家の印象を決める大切な要素です。
+                  年月とともに劣化する外壁や屋根は、見た目だけでなく、建物全体の耐久性にも影響を与えます。
+                  私たちは、美しさと機能性を兼ね備えた外装リフォームをご提供。
                 </p>
               </div>
             </div>
-            <div className="flex justify-center items-center mt-12">
-              <div className="flex-1 mr-4">
-                <h3 className="mb-4 text-sm phrase-emphasis">
-                  確かな技術と豊富な実績
+            <h3 className="text-site-accent-color font-bold mt-6">内装</h3>
+            <div className="mt-8 bg-white rounded relative pt-3">
+              <label className="absolute -top-2 left-4 text-sm tracking-widest pl-2 pr-2 rounded-3xl bg-slate-300 opacity-80">
+                #改装
+              </label>
+              <div className="m-auto p-5 flex">
+                <div className="w-[50%] text-center">
+                  <span className="text-blue-600">before</span>
+                  <Image
+                    className="h-full w-full p-1"
+                    src={beforeRoom}
+                    alt=""
+                  ></Image>
+                </div>
+                <div className="w-[50%] text-center">
+                  <span className="text-red-600">after</span>
+                  <Image
+                    className="h-full w-full p-1"
+                    src={afterRoom}
+                    alt=""
+                  ></Image>
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="mb-8 text-sm phrase-emphasis flex flex-col pl-5 gap-4 ">
+                  <span className="ml-8">暮らしに</span>
+                  <span className="ml-16">快適さと</span>
+                  <span className="ml-24">心地よさを。</span>
                 </h3>
-                <p className="text-[0.5rem]">
-                  私たちは経験豊富な職人と専門スタッフが一丸となり、高品質な施工をお約束します。
-                  長年培ってきた技術と最新の施工方法を活かし、安全で耐久性の高いリフォームを行います。
+                <p className="text-[0.82rem] leading-7">
+                  住まいは、家族の成長やライフスタイルの変化とともに、より快適に進化させることができます。内装リフォームで、お部屋のデザインや使い勝手をアップデートしませんか？
+                  私たちは、壁紙や床の張り替えから間取り変更、収納の最適化まで、お客様の理想をカタチにするリフォームをご提案。デザイン性だけでなく、機能性や住み心地にもこだわり、毎日の暮らしがもっと快適になる空間づくりをお手伝いします。
                 </p>
-              </div>
-              <div className="flex-1">
-                <Image src={works2} alt=""></Image>
-              </div>
-            </div>
-            <div className="flex justify-center items-center mt-12">
-              <div className="flex-1 mr-4">
-                <Image src={works3} alt=""></Image>
-              </div>
-              <div className="flex-1">
-                <h3 className="mb-4 text-sm phrase-emphasis">
-                  素材・デザインにこだわったご提案
-                </h3>
-                <p className="text-[0.5rem]">
-                  お住まいの雰囲気やライフスタイルに合わせた最適な素材・デザインをご提案。
-                  流行を取り入れつつも、長く愛される住まいづくりを目指します。
-                </p>
-              </div>
-            </div>
-            <div className="flex justify-center items-center mt-12">
-              <div className="flex-1  mr-4">
-                <h3 className="mb-4 text-sm phrase-emphasis">
-                  予算に合わせた柔軟なプランニング
-                </h3>
-                <p className="text-[0.5rem]">
-                  リフォームは大きな投資。だからこそ、お客様のご予算に合わせた最適なプランをご提案します。
-                  コストを抑えながらも、品質を損なわない工夫を取り入れます。
-                </p>
-              </div>
-              <div className="flex-1">
-                <Image src={works4} alt=""></Image>
               </div>
             </div>
           </div>
         </section>
         {/* Works */}
-        <section className="h-[167.73vw] font-japanese-basic pl-5 pr-5">
+        <section className="font-japanese-basic pl-5 pr-5">
           <header className="pt-16">
             <span className="text-xs">-施工事例</span>
-            <h2
-              className={`text-2xl ${SECTION_TITLE.className} tracking-[4px]`}
-            >
-              Works
-            </h2>
+            <div>
+              <h2
+                className={`title-br-util text-2xl ${SECTION_TITLE.className} tracking-[4px]`}
+              >
+                Works
+              </h2>
+            </div>
           </header>
-          <div className="mt-14 marquee flex gap-[5px] relative overflow-hidden">
-            <div className="marquee-item">
-              <Image
-                width={WORKS_IMG_WIDTH}
-                height={WORKS_IMG_HEIGHT}
-                src={works1}
-                alt=""
-              ></Image>
-              <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
-                桜木町 ○○邸
-              </p>
-              <div className="ml-1">
-                <p className="mt-2 text-xs tracking-[1.1px]">費用：700万円</p>
-                <p className="mt-2 text-xs tracking-[1.1px]">内容：外装</p>
-              </div>
+          <div className="mt-6 mb-12">
+            <div className="text-sm leading-7">
+              <span className="text-text-main-color font-bold">
+                「こんなリフォームがしたかった！」
+              </span>
+              <br></br>
+              そんなお声をたくさんいただいています。<br></br>
+              実際にリフォームを行ったお客様の施工事例を掲載していますので、
+              <span className="text-text-main-color">
+                ご希望のイメージに近いものを探してみてください。
+              </span>
+              あなたの理想の住まいづくりの参考になれば幸いです。
             </div>
-            <div className="marquee-item">
-              <Image
-                width={WORKS_IMG_WIDTH}
-                height={WORKS_IMG_HEIGHT}
-                src={works2}
-                alt=""
-              ></Image>
-              <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
-                桜木町 ○○邸 2号
-              </p>
-              <div className="ml-1">
-                <p className="mt-2 text-xs tracking-[1.1px]">費用：700万円</p>
-                <p className="mt-2 text-xs tracking-[1.1px]">内容：内装</p>
-              </div>
-            </div>
-            <div className="marquee-item">
-              <Image
-                width={WORKS_IMG_WIDTH}
-                height={WORKS_IMG_HEIGHT}
-                src={works3}
-                alt=""
-              ></Image>
-              <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
-                桜木町 ○○邸
-              </p>
-              <div className="ml-1">
-                <p className="mt-2 text-xs tracking-[1.1px]">費用：700万円</p>
-                <p className="mt-2 text-xs tracking-[1.1px]">
-                  内容：クリーニング
+            <div className="mt-14 marquee flex gap-[5px] relative overflow-hidden">
+              <div className="marquee-item">
+                <Image
+                  width={WORKS_IMG_WIDTH}
+                  height={WORKS_IMG_HEIGHT}
+                  src={works1}
+                  alt=""
+                ></Image>
+                <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
+                  桜木町 ○○邸
                 </p>
-              </div>
-            </div>
-            <div className="marquee-item">
-              <Image
-                width={WORKS_IMG_WIDTH}
-                height={WORKS_IMG_HEIGHT}
-                src={works4}
-                alt=""
-              ></Image>
-              <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
-                桜木町 ○○邸 3号
-              </p>
-              <div className="ml-1">
-                <p className="mt-2 text-xs tracking-[1.1px]">費用：300万円</p>
-                <p className="mt-2 text-xs tracking-[1.1px]">内容：外装</p>
-              </div>
-            </div>
-            <div className="marquee-item">
-              <Image
-                width={WORKS_IMG_WIDTH}
-                height={WORKS_IMG_HEIGHT}
-                src={works5}
-                alt=""
-              ></Image>
-              <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
-                桜木町 ○○邸 8号
-              </p>
-              <div className="ml-1">
-                <p className="mt-2 text-xs tracking-[1.1px]">費用：200万円</p>
-                <p className="mt-2 text-xs tracking-[1.1px]">内容：解体</p>
-              </div>
-            </div>
-            <div className="marquee-item">
-              <Image
-                width={WORKS_IMG_WIDTH}
-                height={WORKS_IMG_HEIGHT}
-                src={works6}
-                alt=""
-              ></Image>
-              <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
-                桜木町 ○○邸 別
-              </p>
-              <div className="ml-1">
-                <p className="mt-2 text-xs tracking-[1.1px]">費用：1,200万円</p>
-                <p className="mt-2 text-xs tracking-[1.1px]">
-                  内容：リフォーム
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="h-52 flex justify-center items-center">
-            <Link href={"/works"}>
-              <button className="group relative h-12 overflow-hidden bg-site-accent-color opacity-80 px-6 text-neutral-50 transition">
-                <span className="relative tracking-[3px]">View more</span>
-                <div className="animate-shine-infinite absolute inset-0 -top-[20px] flex h-[calc(100%+40px)] w-full justify-center blur-[12px]">
-                  <div className="relative h-full w-8 bg-white/30"></div>
+                <div className="ml-1">
+                  <p className="mt-2 text-xs tracking-[1.1px]">費用：700万円</p>
+                  <p className="mt-2 text-xs tracking-[1.1px]">内容：外装</p>
                 </div>
-              </button>
-              {/* <button className="tracking-[5px] border p-3">View more</button> */}
-            </Link>
+              </div>
+              <div className="marquee-item">
+                <Image
+                  width={WORKS_IMG_WIDTH}
+                  height={WORKS_IMG_HEIGHT}
+                  src={works2}
+                  alt=""
+                ></Image>
+                <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
+                  桜木町 ○○邸 2号
+                </p>
+                <div className="ml-1">
+                  <p className="mt-2 text-xs tracking-[1.1px]">費用：700万円</p>
+                  <p className="mt-2 text-xs tracking-[1.1px]">内容：内装</p>
+                </div>
+              </div>
+              <div className="marquee-item">
+                <Image
+                  width={WORKS_IMG_WIDTH}
+                  height={WORKS_IMG_HEIGHT}
+                  src={works3}
+                  alt=""
+                ></Image>
+                <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
+                  桜木町 ○○邸
+                </p>
+                <div className="ml-1">
+                  <p className="mt-2 text-xs tracking-[1.1px]">費用：700万円</p>
+                  <p className="mt-2 text-xs tracking-[1.1px]">
+                    内容：クリーニング
+                  </p>
+                </div>
+              </div>
+              <div className="marquee-item">
+                <Image
+                  width={WORKS_IMG_WIDTH}
+                  height={WORKS_IMG_HEIGHT}
+                  src={works4}
+                  alt=""
+                ></Image>
+                <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
+                  桜木町 ○○邸 3号
+                </p>
+                <div className="ml-1">
+                  <p className="mt-2 text-xs tracking-[1.1px]">費用：300万円</p>
+                  <p className="mt-2 text-xs tracking-[1.1px]">内容：外装</p>
+                </div>
+              </div>
+              <div className="marquee-item">
+                <Image
+                  width={WORKS_IMG_WIDTH}
+                  height={WORKS_IMG_HEIGHT}
+                  src={works5}
+                  alt=""
+                ></Image>
+                <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
+                  桜木町 ○○邸 8号
+                </p>
+                <div className="ml-1">
+                  <p className="mt-2 text-xs tracking-[1.1px]">費用：200万円</p>
+                  <p className="mt-2 text-xs tracking-[1.1px]">内容：解体</p>
+                </div>
+              </div>
+              <div className="marquee-item">
+                <Image
+                  width={WORKS_IMG_WIDTH}
+                  height={WORKS_IMG_HEIGHT}
+                  src={works6}
+                  alt=""
+                ></Image>
+                <p className="mt-1 mb-1 font-bold text-sm tracking-[1.1px] text-center w-full">
+                  桜木町 ○○邸 別
+                </p>
+                <div className="ml-1">
+                  <p className="mt-2 text-xs tracking-[1.1px]">
+                    費用：1,200万円
+                  </p>
+                  <p className="mt-2 text-xs tracking-[1.1px]">
+                    内容：リフォーム
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-12 flex justify-center items-center">
+              <Link href={"/works"}>
+                <button className="group relative rounded-sm h-10 overflow-hidden bg-site-accent-color opacity-80 px-6 text-neutral-50 transition">
+                  <span className="relative tracking-[3px]">View more</span>
+                  <div className="animate-shine-infinite absolute inset-0 -top-[20px] flex h-[calc(100%+40px)] w-full justify-center blur-[12px]">
+                    <div className="relative h-full w-8 bg-white/30"></div>
+                  </div>
+                </button>
+                {/* <button className="tracking-[5px] border p-3">View more</button> */}
+              </Link>
+            </div>
           </div>
         </section>
       </div>
     </>
   );
-}
+};
+export default Home;

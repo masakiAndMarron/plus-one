@@ -40,6 +40,140 @@ body {
   clip-path: polygon(50% 0%, 280% 100%, 0% 100%, 0% 20%);
 }
 
+.clip-triangle-down {
+  clip-path: polygon(0% 0%, 510% 0%, 50% 100%, 0% 90%);
+}
+
 .phrase-emphasis {
   font-weight: bold;
+}
+
+/* 縦書き */
+.vertical-rl {
+  writing-mode: vertical-rl;
+}
+
+/* 汎用 */
+
+.title-br-util {
+  position: relative;
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-left: 2px solid #4287f5;
+}
+
+.title-br-util:before {
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 2px;
+  height: 30%;
+  content: "";
+  background: #42e0f5;
+}
+
+.marker-orange {
+  background-color: #feecd2;
+}
+.marker-yellow {
+  background-color: #fff9c9;
+}
+
+.content-title {
+  margin: 50px 10px;
+  letter-spacing: 8px;
+  color: #263245;
+  font-size: 24px;
+  padding-left: 6px;
+  opacity: 0.7;
+  background: linear-gradient(90deg, #26dfed, #256ff2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.content-title::before {
+  content: attr(data-en);
+  position: absolute;
+  transform: rotate(-5deg);
+  top: -60px;
+  left: -10px;
+  background: rgba(119, 188, 255, 0.3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 60px;
+  font-weight: normal;
+  font-family: serif;
+  font-style: italic;
+}
+
+/** 会社概要 */
+.company-about-table tr {
+  border: none;
+}
+
+.company-about-table th {
+  position: relative;
+  text-align: left;
+  width: 30%;
+  background-color: #52c2d0;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.company-about-table th:after {
+  display: block;
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: calc(50% - 10px);
+  right: -10px;
+  border-left: 10px solid #52c2d0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.company-about-table td {
+  width: 70%;
+  text-align: start;
+  padding: 10px 30px;
+}
+
+.company-about-heading {
+  font-weight: bold;
+  padding-bottom: 0.7em;
+  text-align: center;
+  position: relative;
+  font-size: 1.4rem;
+  margin-bottom: 32px;
+}
+
+.company-about-heading::after {
+  content: "";
+  position: absolute;
+  border-bottom: 10px dotted #4c9ac0;
+  width: 50px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+}
+
+/* 施工事例 */
+.company-works-table th {
+  text-align: center;
+  width: 30%;
+  vertical-align: top;
+  padding-top: 6px;
+}
+
+.company-works-table td {
+  width: 70%;
+  text-align: left;
+  padding: 6px 0;
+  letter-spacing: 1.5px;
 }

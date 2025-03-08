@@ -12,7 +12,7 @@ const Footer = (props: FooterProps) => {
   return (
     <footer className="bg-site-footer-color hidden p-2">
       <div className="text-white pl-5 pb-5">
-        <div>
+        <div className="">
           <Image width={250} height={250} alt="" src={catchcp}></Image>
         </div>
         <nav>
